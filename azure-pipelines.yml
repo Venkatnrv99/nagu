@@ -20,7 +20,7 @@ steps:
 - task: ArtifactoryNuGet@2
   inputs:
     command: 'restore'
-    artifactoryService: 'vigneshs-saas'
+    artifactoryService: 'artifactory'
     targetResolveRepo: 'nuget'
     solutionPath: '**/*.sln'
     collectBuildInfo: true
@@ -29,6 +29,6 @@ steps:
     includeEnvVars: true    
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryService: 'vigneshs-saas'
+    artifactoryService: 'artifactory'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
