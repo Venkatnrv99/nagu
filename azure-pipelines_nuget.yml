@@ -14,7 +14,7 @@ steps:
 - task: ArtifactoryNuGet@2
   inputs:
     command: 'restore'
-    artifactoryService: 'jfrog' # Updated to use the 'jfrog' service connection
+    artifactoryService: 'artifactory' # Updated to use the 'jfrog' service connection
     targetResolveRepo: 'nuget'
     solutionPath: '**/*.sln'
     collectBuildInfo: true
@@ -23,6 +23,6 @@ steps:
     includeEnvVars: true    
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryService: 'jfrog' # Updated to use the 'jfrog' service connection
+    artifactoryService: 'artifactory' # Updated to use the 'jfrog' service connection
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
