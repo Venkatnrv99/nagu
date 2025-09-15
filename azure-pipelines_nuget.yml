@@ -1,0 +1,28 @@
+trigger:
+- master
+
+pool: 'Default' # Assuming your self-hosted agent is in the 'Default' pool
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: ArtifactoryNuGet@2
+  inputs:
+    command: 'restore'
+    artifactoryService: 'jfrog' # Updated to use the 'jfrog' service connection
+    targetResolveRepo: 'nuget'
+    solutionPath: '**/*.sln'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    includeEnvVars: true    
+- task: ArtifactoryPublishBuildInfo@1
+  inputs:
+    artifactoryService: 'jfrog' # Updated to use the 'jfrog' service connection
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
