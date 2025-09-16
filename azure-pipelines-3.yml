@@ -1,3 +1,4 @@
+pool: 'Default'
 parameters:
 - name: artifactoryServiceConnection
   type: string
