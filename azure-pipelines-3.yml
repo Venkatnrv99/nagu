@@ -1,7 +1,3 @@
-variables:
-- group: cran
-- name: jfrog_cli_temp_dir
-  value: $(Pipeline.Workspace)/jfrog-tmp
 parameters:
 - name: artifactoryServiceConnection
   type: string
