@@ -4,7 +4,7 @@ parameters:
   default: new
 - name: artifactoryPlatformOIDCServiceConnection
   type: string
-  default: new1
+  default: new
 stages:
 - stage: __default
   jobs:
@@ -17,7 +17,7 @@ stages:
         script: "\nif (!(Test-Path $(jfrog_cli_temp_dir)))\n{\n  if($PSVersionTable.PSVersion.Major -eq '7'){\n    mkdir -p $(jfrog_cli_temp_dir)\n  } else {\n    mkdir -Path $(jfrog_cli_temp_dir)\n  }          \n}\n\nWrite-Host \"$(jfrog_cli_temp_dir) now confirmed to exist\""
     - task: JFrogToolsInstaller@1
       inputs:
-        artifactoryConnection: sample-pipeline-service-v2
+        artifactoryConnection: new
         cliInstallationRepo: jfrog-cli-v2
         installCustomVersion: true
         cliVersion: 2.77.0
@@ -58,7 +58,7 @@ stages:
 
             local(
               {
-                r <- list("cran-remote" = "http://10.160.0.6:8082/artifactory/cran-remote/")
+                r <- list("cran-remote" = "http://hts2.jfrog.io//artifactory/cran-remo/")
                 options(repos = r)
               }
             )
