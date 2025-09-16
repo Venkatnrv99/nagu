@@ -5,7 +5,7 @@ parameters:
   default: new
 - name: artifactoryPlatformOIDCServiceConnection
   type: string
-  default: new
+  default: new1
 stages:
 - stage: __default
   jobs:
