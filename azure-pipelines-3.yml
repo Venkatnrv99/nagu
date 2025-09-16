@@ -1,4 +1,6 @@
 pool: 'Default'
+variables:
+- name: jfrog_cli_temp_dir
 parameters:
 - name: artifactoryServiceConnection
   type: string
